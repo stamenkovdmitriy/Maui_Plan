@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui_Plan.MainPage" BackgroundColor="#557B5D"
+             >
+
+    <ScrollView >
+        <VerticalStackLayout>
+            <!--Шапка-->
+            <VerticalStackLayout
+                HorizontalOptions="Center">
+                <Label 
+                    Text="План-конспект"
+                    TextColor="White"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Margin="4"/>
+
+                <Border
+                    BackgroundColor="#313F3C"
+                    Margin="8"
+                    Padding="10"
+                    WidthRequest="320"
+                    FlexLayout.AlignSelf="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20"/>
+                    </Border.StrokeShape>
+
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout >
+                            <Label 
+                                Text="Тема занятия:"
+                                TextColor="White"
+                                Margin="2,10"/>
+                            <Editor x:Name="text_Tema"
+                               Margin="5"
+                               WidthRequest="290"
+                               AutoSize="TextChanges"
+                               BackgroundColor="#182924"
+                               TextColor="White">
+                            </Editor>
+
+                            <Label 
+                                Text="Цели и задачи:"
+                                TextColor="White"
+                                Margin="2,10"/>
+                            <Editor x:Name="text_celiZadachi"
+                               Margin="2,5"
+                               WidthRequest="290"
+                               AutoSize="TextChanges"
+                               BackgroundColor="#182924"
+                               TextColor="White">
+                            </Editor>
+
+                            <Label 
+                                Text="Оборудование:"
+                                TextColor="White"
+                                Margin="2,10"/>
+                            <Editor x:Name="text_oborudovanie"
+                               Margin="2,5,2,15"
+                               WidthRequest="290"
+                               AutoSize="TextChanges"
+                               BackgroundColor="#182924"
+                               TextColor="White">
+                            </Editor>
+
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <Button x:Name="startZanyatie"
+                    Text="Начать занятие"
+                    BackgroundColor="DarkTurquoise" 
+                    BorderColor="White"
+                    TextColor="White"
+                    WidthRequest="140"
+                    HeightRequest="40" 
+                        Clicked="startZanyatie_Clicked">
+                    <Button.Triggers>
+                        <Trigger Property="IsPressed" Value="True" TargetType="Button">
+                            <Setter Property="TextColor" Value="Black" />
+                            <Setter Property="WidthRequest" Value="135" />
+                        </Trigger>
+                    </Button.Triggers>
+                </Button>
+            </VerticalStackLayout>
+
+            <!--конспект-->
+            <FlexLayout
+                Padding="30,0"
+                VerticalOptions="Center"
+                Direction="Row"
+                Wrap="Wrap"
+                JustifyContent="Center"
+                AlignItems="Center">
+
+                <!--1-раздел-->
+                <Border
+                    BackgroundColor="#313F3C"
+                    Margin="8"
+                    Padding="10"
+                    WidthRequest="320"
+                    FlexLayout.AlignSelf="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20"/>
+                    </Border.StrokeShape>
+
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout >
+                            <Label 
+                            Text="Вводная часть"
+                            TextColor="White"
+                            Margin="10"/>
+                            <!--timer-1-->
+                            <HorizontalStackLayout>
+                                <Label x:Name="timer_VvodnayaChast"
+                                    Text=" {Binding   Source={x:Reference progres_VvodnayaChast},
+                                       Path=Value,
+                                       StringFormat='{0:F0}'}"
+                                    TextColor="DarkTurquoise"
+                                    Margin="4" 
+                                    VerticalTextAlignment="Center" 
+                                    WidthRequest="25"/>
+                                <Slider x:Name="progres_VvodnayaChast"
+                                     Maximum="{Binding  Source={x:Reference time_VvodnayaChast},
+                                    Path=Text}"
+                                     Margin="0"
+                                     WidthRequest="210"
+                                     HeightRequest="30" 
+                                     BackgroundColor="Transparent" 
+                                     MinimumTrackColor="DarkTurquoise" 
+                                     MaximumTrackColor="White"
+                                     ThumbColor="DarkTurquoise"/>
+                                <Editor x:Name="time_VvodnayaChast"
+                                    Text="10"
+                                    AutoSize="TextChanges"
+                                    TextColor="DarkTurquoise"
+                                    Margin="4"
+                                    MaxLength="3"/>
+                            </HorizontalStackLayout>
+                            <!--editor-1-->
+                            <Editor x:Name="text_VvodnayaChast"
+                               Margin="5"
+                               WidthRequest="290"
+                               AutoSize="TextChanges"
+                               BackgroundColor="#182924"
+                               TextColor="White">
+                            </Editor>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!--2-раздел-->
+                <Border
+                    BackgroundColor="#313F3C"
+                    Margin="8"
+                    Padding="10"
+                    WidthRequest="320"
+                    FlexLayout.AlignSelf="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20"/>
+                    </Border.StrokeShape>
+
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout >
+
+                            <Label 
+                                Text="Основная часть"
+                                TextColor="White"
+                                Margin="10"/>
+                            <!--timer-2-->
+                            <HorizontalStackLayout>
+                                <Label x:Name="timer_OsnvnayaChast"
+                                    Text="{Binding  Source={x:Reference progres_OsnvnayaChast},
+                                        Path=Value,
+                                       StringFormat='{0:F0}'}"
+                                    TextColor="DarkTurquoise"
+                                    Margin="4" 
+                                    VerticalTextAlignment="Center" 
+                                    WidthRequest="25"/>
+                                <Slider x:Name="progres_OsnvnayaChast"
+                                         Maximum="{Binding  Source={x:Reference time_OsnvnayaChast},
+                                                Path=Text}"
+                                     Margin="0"
+                                     WidthRequest="210"
+                                     HeightRequest="30" 
+                                     BackgroundColor="Transparent" 
+                                     MinimumTrackColor="DarkTurquoise" 
+                                     MaximumTrackColor="White"
+                                     ThumbColor="DarkTurquoise"/>
+                                <Editor x:Name="time_OsnvnayaChast"
+                                    Text="20"
+                                    AutoSize="TextChanges"
+                                    TextColor="DarkTurquoise"
+                                    Margin="4"
+                                    MaxLength="2"/>
+                            </HorizontalStackLayout>
+                            <!--editor-2-->
+                            <Editor x:Name="text_OsnovnayaChast"
+                                   Margin="5"
+                                   WidthRequest="290"
+                                   AutoSize="TextChanges"
+                                   BackgroundColor="#182924"
+                                   TextColor="White">
+                            </Editor>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+
+                <!--3-раздел-->
+                <Border
+                    BackgroundColor="#313F3C"
+                    Margin="8"
+                    Padding="10"
+                    WidthRequest="320"
+                    FlexLayout.AlignSelf="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="20"/>
+                    </Border.StrokeShape>
+
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout >
+                            <Label 
+                                Text="Заключительная часть"
+                                TextColor="White"
+                                Margin="10"/>
+                            <!--timer-3-->
+                            <HorizontalStackLayout>
+                                <Label x:Name="timer_ZacluchitelnayaChast"
+                                    Text="{Binding  Source={x:Reference progres_ZacluchitelnayaChast},
+                                        Path=Value,
+                                       StringFormat='{0:F0}'}"
+                                    TextColor="DarkTurquoise"
+                                    Margin="4" 
+                                    VerticalTextAlignment="Center" 
+                                    WidthRequest="25"/>
+                                <Slider x:Name="progres_ZacluchitelnayaChast"
+                                         Maximum="{Binding  Source={x:Reference time_ZacluchitelnayaChast},
+                                                Path=Text}"
+                                     Margin="0"
+                                     WidthRequest="210"
+                                     HeightRequest="30" 
+                                     BackgroundColor="Transparent" 
+                                     MinimumTrackColor="DarkTurquoise" 
+                                     MaximumTrackColor="White"
+                                     ThumbColor="DarkTurquoise"/>
+                                <Editor x:Name="time_ZacluchitelnayaChast"
+                                    Text="20"
+                                    AutoSize="TextChanges"
+                                    TextColor="DarkTurquoise"
+                                    Margin="4"
+                                    MaxLength="2"/>
+                            </HorizontalStackLayout>
+                            <!--editor-3-->
+                            <Editor x:Name="text_ZacluchitelnayaChast"
+                                   Margin="5"
+                                   WidthRequest="290"
+                                   AutoSize="TextChanges"
+                                   BackgroundColor="#182924"
+                                    TextColor="White">
+                            </Editor>
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </Border>
+                
+                
+                
+            </FlexLayout>
+            <Button x:Name="save"
+                    Text="Save File"
+                    BackgroundColor="DarkTurquoise" 
+                    BorderColor="White"
+                    TextColor="White"
+                    WidthRequest="140"
+                    HeightRequest="40" 
+                    Margin="4"
+                       Clicked="save_Clicked">
+                    <Button.Triggers>
+                        <Trigger Property="IsPressed" Value="True" TargetType="Button">
+                            <Setter Property="TextColor" Value="Black" />
+                            <Setter Property="WidthRequest" Value="135" />
+                        </Trigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button x:Name="open"
+                    Text="Open File"
+                    BackgroundColor="DarkTurquoise" 
+                    BorderColor="White"
+                    TextColor="White"
+                    WidthRequest="140"
+                    HeightRequest="40" 
+                    Margin="4"
+                      Clicked="open_Clicked" >
+                    <Button.Triggers>
+                        <Trigger Property="IsPressed" Value="True" TargetType="Button">
+                            <Setter Property="TextColor" Value="Black" />
+                            <Setter Property="WidthRequest" Value="135" />
+                        </Trigger>
+                    </Button.Triggers>
+                </Button>
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Maui_Plan.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Maui_Plan"
+    Shell.FlyoutBehavior="Flyout"
+    Shell.ForegroundColor="Black" Shell.TitleColor="White"
+    Shell.FlyoutBackgroundColor="DarkKhaki" 
+    Shell.BackgroundColor="#182924">
+<!--
+-->
+    <Shell.FlyoutHeader>
+        <VerticalStackLayout
+            HeightRequest="50"
+            BackgroundColor="#3C584C">
+            <Label 
+                Text="План-конспекты занятий"
+                TextColor="#C0C8C6"
+                FontSize="Medium"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Margin="8"></Label>
+        </VerticalStackLayout>
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="#1" >
+        <Tab >
+            <ShellContent
+            Title="План-конспекты занятий"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+            
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="#2">
+        <Tab>
+            <ShellContent
+            Title="План-конспекты занятий"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="#3">
+        <Tab>
+            <ShellContent
+            Title="План-конспекты занятий"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="#4">
+        <Tab>
+            <ShellContent
+            Title="План-конспекты занятий"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+        </Tab>
+    </FlyoutItem>
+
+    
+
+
+
+
+    
+</Shell>
